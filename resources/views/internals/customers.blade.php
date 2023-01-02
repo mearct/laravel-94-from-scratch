@@ -10,11 +10,9 @@
     <h1>Customers</h1>
 
     <ul>
-       <?php 
-            foreach ( $anothername as $customer ) {
-                echo '<li>' . $customer . '</li>';
-            }
-       ?>
+        @foreach ( $customers as $customer )
+            <li> {{ $customer }} </li>
+        @endforeach
     </ul>
 </body>
 </html>
