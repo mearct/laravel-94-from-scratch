@@ -4,7 +4,7 @@
 # git checkout 001_views
 # git checkout 002_passing-data-to-views
 # git checkout 003_controllers
-# git checkout 
+# git checkout 004_blade-templating-basics
 # git checkout 
 # git checkout 
 # git checkout 
