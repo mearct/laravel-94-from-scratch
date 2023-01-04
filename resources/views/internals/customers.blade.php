@@ -1,11 +1,8 @@
 @extends( 'layout' )
-
-
+@section( 'title', 'Customer List' )
 @section( 'content' )
     <h1>Customers</h1>
-
     <form action="customers" method="POST" class="pb-5">
-
         <div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Name</span>
@@ -15,7 +12,6 @@
                 {{ $errors -> first( 'name' ) }}
             </div>
         </div>
-
         <div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Email</span>
@@ -25,14 +21,9 @@
                 {{ $errors -> first( 'email' ) }}
             </div>
         </div>
-
-
-
-
         <button type="submit">Add Customer</button>
         @csrf
     </form>
-
     <ul>
         @foreach ( $customers as $customer )
             <li> {{ $customer -> name }} <span class="text-muted">{{ $customer -> email }}</span></li>
