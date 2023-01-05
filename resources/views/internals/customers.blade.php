@@ -21,12 +21,33 @@
                 {{ $errors -> first( 'email' ) }}
             </div>
         </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="active"> Status </label>
+            <select class="form-select" name="active"  id="active">
+              <option selected> Select customer status </option>
+              <option value="1"> Active </option>
+              <option value="0"> Inactive </option>
+            </select>
+          </div>
         <button type="submit">Add Customer</button>
         @csrf
     </form>
-    <ul>
-        @foreach ( $customers as $customer )
-            <li> {{ $customer -> name }} <span class="text-muted">{{ $customer -> email }}</span></li>
-        @endforeach
-    </ul>
+    <div class="row">
+        <div class="col-sm-5 col-md-6">
+            <h3>Acive</h3>
+            @foreach ( $activeCustomers as $activeCustomer )
+                <p>
+                    {{ $activeCustomer -> name }} <span class="text-muted">{{ $activeCustomer -> email }}</span>
+                </p>
+            @endforeach
+        </div>
+        <div class="col-sm-5 col-md-6">
+            <h3>Inactive</h3>
+            @foreach ( $inactiveCustomers as $inactiveCustomer )
+                <p>
+                    {{ $inactiveCustomer -> name }} <span class="text-muted">{{ $inactiveCustomer -> email }}</span>
+                </p>
+            @endforeach
+        </div>
+    </div>
 @endsection
