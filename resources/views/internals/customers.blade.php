@@ -29,24 +29,45 @@
               <option value="0"> Inactive </option>
             </select>
           </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="company_id"> Company </label>
+            <select class="form-select" name="company_id"  id="company_id">
+                <option selected> Company Name </option>
+                @foreach ( $companies as $company )
+                    <option value="{{ $company -> id }}"> {{ $company -> name }} </option>
+                @endforeach
+            </select>
+          </div>
         <button type="submit">Add Customer</button>
         @csrf
     </form>
     <div class="row">
         <div class="col-sm-5 col-md-6">
-            <h3>Acive</h3>
+            <h3>Active Customers</h3>
             @foreach ( $activeCustomers as $activeCustomer )
                 <p>
-                    {{ $activeCustomer -> name }} <span class="text-muted">{{ $activeCustomer -> email }}</span>
+                    {{ $activeCustomer -> name }} <span class="text-muted">{{ $activeCustomer -> company -> name }}</span>
                 </p>
             @endforeach
         </div>
         <div class="col-sm-5 col-md-6">
-            <h3>Inactive</h3>
+            <h3>Inactive Customers</h3>
             @foreach ( $inactiveCustomers as $inactiveCustomer )
                 <p>
-                    {{ $inactiveCustomer -> name }} <span class="text-muted">{{ $inactiveCustomer -> email }}</span>
+                    {{ $inactiveCustomer -> name }} <span class="text-muted">{{ $inactiveCustomer -> company -> name }}</span>
                 </p>
+            @endforeach
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            @foreach ( $companies as $company )
+                <h3> {{ $company -> name }}</h3>
+                <ul>
+                    @foreach ( $company->customers as $customer)
+                        <li> {{ $customer -> name }} </li>
+                    @endforeach
+                </ul>
             @endforeach
         </div>
     </div>
