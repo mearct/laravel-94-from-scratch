@@ -16,12 +16,21 @@
         {{ $errors -> first( 'email' ) }}
     </div>
 </div>
+{{-- <div class="input-group mb-3">
+    <label class="input-group-text" for="active"> Status </label>
+    <select class="form-select" name="active"  id="active">
+      <option selected> Select customer status </option>
+      <option value="1" {{ $customer -> active == 'Active' ? 'selected' : '' }}> Active </option>
+      <option value="0" {{ $customer -> active == 'Inactive' ? 'selected' : '' }}> Inactive </option>
+    </select>
+</div> --}}
 <div class="input-group mb-3">
     <label class="input-group-text" for="active"> Status </label>
     <select class="form-select" name="active"  id="active">
       <option selected> Select customer status </option>
-      <option value="1"> Active </option>
-      <option value="0"> Inactive </option>
+        @foreach ( $customer -> activeOptions() as $activeOptionKey => $activeOptionValue )
+            <option value="{{ $activeOptionKey }}" {{ $customer -> active == $activeOptionValue ? 'selected' : '' }}> {{ $activeOptionValue }} </option>
+        @endforeach
     </select>
 </div>
 <div class="input-group mb-3">
@@ -29,7 +38,7 @@
     <select class="form-select" name="company_id"  id="company_id">
         <option selected> Company Name </option>
         @foreach ( $companies as $company )
-            <option value="{{ $company -> id }}"> {{ $company -> name }} </option>
+            <option value="{{ $company -> id }}" {{ $company -> id == $customer -> company_id ? 'selected' : '' }}> {{ $company -> name }} </option>
         @endforeach
     </select>
 </div>
