@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ContactFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,8 @@ use App\Http\Controllers\CustomersController;
 
 Route::view( '/', 'home' );
 Route::view( '/contact', 'contact' );
+Route::get( '/contact', [ ContactFormController::class, 'create' ]);
+Route::post( 'contact', [ ContactFormController::class, 'store' ]);
 Route::view( '/about', 'about' );
 
 // Route::get( '/customers', [ CustomersController::class, 'index' ] );

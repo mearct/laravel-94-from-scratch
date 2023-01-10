@@ -45,3 +45,6 @@
 
 # dd($customers)
 # dd(request('name'));
+
+# php artisan make:mail ContactFormMail --markdown=emails.contact.contact-form
+
