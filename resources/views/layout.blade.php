@@ -11,6 +11,11 @@
     <div class="container">
         {{-- @include( 'nav', [ 'username' => 'cool_user_123' ] ) --}}
         @include( 'nav' )
+            @if ( session() -> has( 'message' ) )
+                <div class="alert alert-success" role="alert">
+                    <Strong>Success</Strong> {{ session() -> get( 'message' ) }}
+                </div>
+            @endif
         @yield( 'content' )
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
